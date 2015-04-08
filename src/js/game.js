@@ -128,7 +128,7 @@
       if(character.lives === 0){
         this.game.input.keyboard.disabled = true;
 
-        this.game.add.text(400, 200, 'GAME OVER' , {fill: '#fff'});
+        this.game.add.text(425, 100, 'GAME OVER' , {fill: '#fff'});
       }
     },
 
