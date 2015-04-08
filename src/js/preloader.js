@@ -28,6 +28,7 @@
       this.load.image('floatplatform', 'assets/winter_ground/ground0.png');
       this.load.image('wallLeft', 'assets/winter_ground/ground4.png');
       this.load.image('background', 'assets/alternate.jpg');
+      this.load.image('title', 'assets/Wizurds.png');
     },
 
     create: function () {

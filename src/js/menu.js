@@ -13,11 +13,10 @@
         , y = this.game.height / 2;
 
 
-      this.titleTxt = this.add.bitmapText(x, y, 'minecraftia', 'WIZURDS' );
-      this.titleTxt.align = 'center';
-      this.titleTxt.x = this.game.width / 2 - this.titleTxt.textWidth / 2;
+      this.titlesprite = this.game.add.sprite(this.game.width / 5, 300, 'title');
+      this.titlesprite.align = 'center';
 
-      y = y + this.titleTxt.height + 5;
+      y = y + this.titlesprite.height + 5;
       this.startTxt = this.add.bitmapText(x, y, 'minecraftia', 'START');
       this.startTxt.align = 'center';
       this.startTxt.x = this.game.width / 2 - this.startTxt.textWidth / 2;

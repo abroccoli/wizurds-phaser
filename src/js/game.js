@@ -93,14 +93,14 @@
 
     characterBuild: function(){
       this.sprite1 = this.game.add.sprite(100, 530, 'hero');
-      this.characterSettings(this.sprite1);
+      this.characterSettings(this.sprite1, 3);
 
       this.sprite2 = this.game.add.sprite(900, 530, 'hero2');
-      this.characterSettings(this.sprite2);
+      this.characterSettings(this.sprite2, 3);
     },
 
-    characterSettings: function(sprite){
-      sprite.lives = 3;
+    characterSettings: function(sprite, lives){
+      sprite.lives = lives;
       sprite.scale.x = 2;
       sprite.scale.y = 2;
       this.game.physics.arcade.enable(sprite);
@@ -114,17 +114,26 @@
     },
 
     characterKill: function(fire, character){
+
       console.log('hit ' + character.key);
       character.animations.play('death');
       fire.destroy();
-      if (character === this.sprite1){
-        this.game.input.keyboard.disabled = true;
-      }else if (character === this.sprite2){
-        this.game.input.keyboard.disabled = true;
-      }
+
       character.lives -= 1;
       this.lifetext1.text = 'Lives: ' + this.sprite1.lives;
       this.lifetext2.text = 'Lives: ' + this.sprite2.lives;
+
+      this.characterRespawn(character);
+
+      if(character.lives === 0){
+        this.game.input.keyboard.disabled = true;
+
+        this.game.add.text(400, 200, 'GAME OVER' , {fill: '#fff'});
+      }
+    },
+
+    characterRespawn: function(character){
+      character.reset(500,0);
     },
 
     characterRunRight: function(sprite){
