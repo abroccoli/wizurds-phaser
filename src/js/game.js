@@ -95,6 +95,8 @@
 
       this.sprite2 = this.game.add.sprite(900, 530, 'hero2');
       this.characterSettings(this.sprite2, 3);
+
+      this.game.input.keyboard.disabled = false;
     },
 
     characterSettings: function(sprite, lives){
