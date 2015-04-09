@@ -7,9 +7,6 @@
 
   Game.prototype = {
 
-    // sprite1, sprite2, this.platforms, ground, fireballs, midwallLeft, midwallRight, leftFloat, leftCenterFloat, leftUpperFloat, lifetext1, lifetext2, midwallTop, rightFloat, rightCenterFloat, rightUpperFloat, firetimer1 = 0
-
-
     create: function () {
       this.background = this.game.add.tileSprite(0, 0, 1000, 600, 'background');
 
@@ -132,7 +129,11 @@
     },
 
     characterRespawn: function(character){
-      character.reset(500,0);
+      if (character === this.sprite1){
+        character.reset(10,0);
+      }else if (character === this.sprite2){
+        character.reset(950,0);
+      }
     },
 
     characterRunRight: function(sprite){
