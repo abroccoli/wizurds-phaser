@@ -9,6 +9,8 @@ window.onload = function () {
   game.state.add('preloader', ns.Preloader);
   game.state.add('menu', ns.Menu);
   game.state.add('game', ns.Game);
+  game.state.add('controls', ns.Controls);
+  game.state.add('credits', ns.Credits);
   /* yo phaser:state new-state-files-put-here */
 
   game.state.start('boot');

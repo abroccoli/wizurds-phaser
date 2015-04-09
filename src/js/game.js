@@ -113,7 +113,6 @@
     },
 
     characterKill: function(fire, character){
-
       console.log('hit ' + character.key);
       character.animations.play('death');
       fire.destroy();
@@ -127,7 +126,9 @@
       if(character.lives === 0){
         this.game.input.keyboard.disabled = true;
 
-        this.game.add.text(425, 100, 'GAME OVER' , {fill: '#fff'});
+        this.game.add.text(this.game.width/2 - 150, 100, 'GAME OVER' , {fill: '#fff', fontSize: '50px'});
+
+        this.game.add.text(this.game.width/2 - 40, 150, 'Restart', {fill: '#fff', fontSize: '20px'})
 
       }
     },

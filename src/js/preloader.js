@@ -29,6 +29,11 @@
       this.load.image('wallLeft', 'assets/winter_ground/ground4.png');
       this.load.image('background', 'assets/alternate.jpg');
       this.load.image('title', 'assets/Wizurds.png');
+      this.load.image('start', 'assets/START.png');
+      this.load.image('controls', 'assets/CONTROLS.png');
+      this.load.image('credits', 'assets/CREDITS.png');
+      this.load.image('purpplayer', 'assets/Purple-Player.png');
+      this.load.image('pinkplayer', 'assets/Pink-Player.png');
     },
 
     create: function () {
