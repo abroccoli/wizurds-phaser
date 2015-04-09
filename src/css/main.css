@@ -10,8 +10,20 @@ html, body {
   background: #000;
 }
 
+a{
+  color: #fff;
+}
+
 .game {
   width: 1000px;
   height: 600px;
   margin: 0px auto;
 }
+
+.credit {
+  width: 300px;
+  color: #fff;
+  margin: 20px auto 0px auto;
+  text-align: center;
+}
+

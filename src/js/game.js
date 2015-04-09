@@ -7,7 +7,7 @@
 
   Game.prototype = {
 
-    // sprite1, sprite2, this.platforms, ground, fireballs, midwallLeft, midwallRight, leftFloat, leftCenterFloat, leftUpperFloat, lifetext1, lifetext2, midwallTop, rightFloat, rightCenterFloat, rightUpperFloat, firetimer = 0
+    // sprite1, sprite2, this.platforms, ground, fireballs, midwallLeft, midwallRight, leftFloat, leftCenterFloat, leftUpperFloat, lifetext1, lifetext2, midwallTop, rightFloat, rightCenterFloat, rightUpperFloat, firetimer1 = 0
 
 
     create: function () {
@@ -17,8 +17,6 @@
       this.lifetext2 = this.game.add.text(895, 10,'Lives: 3', {fill: '#FF00A6'});
 
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-      this.firetimer = 0;
 
       this.fireballs = this.game.add.group();
       this.game.physics.arcade.enable(this.fireballs);
@@ -111,6 +109,7 @@
       sprite.animations.add('attack', [12], 10, true);
       sprite.animations.add('death', [4], 10, true);
       sprite.flipped = false;
+      sprite.firetimer = 0;
     },
 
     characterKill: function(fire, character){
@@ -129,6 +128,7 @@
         this.game.input.keyboard.disabled = true;
 
         this.game.add.text(425, 100, 'GAME OVER' , {fill: '#fff'});
+
       }
     },
 
@@ -166,7 +166,7 @@
 
     initializeControls: function(){
       this.cursors = this.game.input.keyboard.createCursorKeys();
-      this.attackkey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+      this.attackkey = this.game.input.keyboard.addKey(Phaser.Keyboard.QUESTION_MARK);
 
       this.wasd = {
         up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -174,7 +174,7 @@
         right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
         down: this.game.input.keyboard.addKey(Phaser.Keyboard.S)
       };
-      this.attackkey2 = this.game.input.keyboard.addKey(Phaser.Keyboard.TAB);
+      this.attackkey2 = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
 
       this.sprite1.anchor.setTo(0.5,0.5);
       this.sprite1.body.velocity.x = 0;
@@ -233,21 +233,26 @@
     },
 
     fireballsCreate: function(sprite){
+      var firecolor;
       if (sprite === this.sprite1){
-        this.firecolor = 'fire';
+        firecolor = 'fire';
       }else if(sprite === this.sprite2){
-        this.firecolor = 'fire2';
+        firecolor = 'fire2';
       }
-      if (this.game.time.now > this.firetimer){
+      this.fireballsBuild(firecolor, sprite);
+    },
+
+    fireballsBuild: function(firecolor, sprite){
+      if (this.game.time.now > sprite.firetimer){
         if (sprite.flipped === true){
-          this.fireball = this.fireballs.create(sprite.body.x + sprite.body.width / 2 - 20, sprite.body.y + sprite.body.height / 2-5, this.firecolor);
+          this.fireball = this.fireballs.create(sprite.body.x + sprite.body.width / 2 - 20, sprite.body.y + sprite.body.height / 2-5, firecolor);
           this.fireball.scale.x *= -1;
           this.fireball.body.velocity.x = -400;
-          this.firetimer = this.game.time.now + 150;
+          sprite.firetimer = this.game.time.now + 150;
         } else{
-          this.fireball = this.fireballs.create(sprite.body.x + sprite.body.width / 2 + 20, sprite.body.y + sprite.body.height / 2-5, this.firecolor);
+          this.fireball = this.fireballs.create(sprite.body.x + sprite.body.width / 2 + 20, sprite.body.y + sprite.body.height / 2-5, firecolor);
           this.fireball.body.velocity.x = 400;
-          this.firetimer = this.game.time.now + 150;
+          sprite.firetimer = this.game.time.now + 150;
         }
       }
     },
