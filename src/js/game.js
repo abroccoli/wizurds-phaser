@@ -125,11 +125,7 @@
 
       if(character.lives === 0){
         this.game.input.keyboard.disabled = true;
-
-        this.game.add.text(this.game.width/2 - 150, 100, 'GAME OVER' , {fill: '#fff', fontSize: '50px'});
-
-        this.game.add.text(this.game.width/2 - 40, 150, 'Restart', {fill: '#fff', fontSize: '20px'})
-
+        this.game.add.button(this.game.width/2 - 275, 50, 'gameover', this.restart);
       }
     },
 
@@ -271,8 +267,11 @@
           this.game.physics.arcade.collide(this.fireballs.children[i], this.sprite2, this.characterKill,null, this);
         }
       }
-    }
+    },
 
+    restart:function(){
+      this.game.state.start('game');
+    }
   };
 
   window['wizurds'] = window['wizurds'] || {};

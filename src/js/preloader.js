@@ -34,6 +34,8 @@
       this.load.image('credits', 'assets/CREDITS.png');
       this.load.image('purpplayer', 'assets/Purple-Player.png');
       this.load.image('pinkplayer', 'assets/Pink-Player.png');
+      this.load.image('back', 'assets/BACK.png');
+      this.load.image('gameover', 'assets/Game-Over.png');
     },
 
     create: function () {
